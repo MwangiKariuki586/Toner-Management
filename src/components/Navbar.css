@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    background-color:#282d64 ;
+    padding: 0 5%;
+    width: 90%;
+    height: 100px;
+    justify-content: space-between;
+}
+.logo_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    width: 80px;
+    
+}
+.nav-links{
+    display: flex;
+}
+.nav-links li {
+    color: white;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.nav-links li:hover{
+    color:#e52384 ;
+}
