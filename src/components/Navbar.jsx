@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../assets/logo.png"
 import "./Navbar.css"
 import { Link,useNavigate } from 'react-router-dom'
+import { IoIosArrowDropdown } from "react-icons/io";
+
 const Navbar = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+  const [hide,setHide] = useState(true)
+  const hideLogin = () => {
+    setHide(!hide)
+  }
   return (
     <nav className='navbar'>
         <div className='logo_div'>
@@ -17,17 +23,20 @@ const Navbar = () => {
                     Home
                 </li>
             </Link>
-            {/* <Link to="/toner_request"> */}
-                <li onClick={navigate("/")}>
+            <Link to="/toner_request">
+                <li>
                     Toner Request
                 </li>
-            {/* </Link> */}
-            <li>
-                <label htmlFor="select">Login </label>
-                <select name="Login"id="">
-                    <option value="">As staff</option>
-                    <option value="">As Admin</option>
-                </select>
+            </Link>
+            <li className="login">
+                <div onClick={hideLogin} className="login_options">
+                    <span>Login</span>
+                    <IoIosArrowDropdown />
+                </div>
+                <div className={hide ? "options hide":"options"}>
+                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "/staff_login">Staff</Link>
+                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "/admin_login">Admin</Link>
+                </div>
             </li>
         </ul>
     </nav>
