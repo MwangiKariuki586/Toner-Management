@@ -1,0 +1,22 @@
+.signin_form{
+    height: 100vh;
+   margin-top: 0px;
+   background-color: #E6EBF4; 
+   flex-direction: column;
+   display: flex;
+   align-items: center;
+}
+.formsignin{
+    border-radius: 8px;
+    padding: 50px;
+    background-color: white;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputlabels{
+    
+    display: flex;
+    justify-content: flex-start;
+}

@@ -35,7 +35,7 @@ const Navbar = () => {
                 </div>
                 <div className={hide ? "options hide":"options"}>
                     <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "/staff_login">Staff</Link>
-                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "/admin_login">Admin</Link>
+                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "http://localhost:8000/admin" target='_blank'>Admin</Link>
                 </div>
             </li>
         </ul>
