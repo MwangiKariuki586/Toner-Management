@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { v4 as uuidv4, v4 } from 'uuid';
 export const Gettoner = () => {
   const [data, setData] = useState("");
   const [test, setTest] = useState([]);
@@ -10,10 +10,10 @@ export const Gettoner = () => {
   }, []);
 
   const getToners = () => {
-    fetch(`http://127.0.0.1:8000/toner_requests/`)
+    fetch(`http://localhost:8000/toners/`)
       .then((response) => response.json())
       .then((result) => {
-        setTest(result.Toner_requests);
+        setTest(result.Toners);
         console.log(test);
       })
       .catch((err) => {
@@ -21,7 +21,7 @@ export const Gettoner = () => {
       });
   };
   const maptoners = test.map((res) => {
-    return <option key={res.Staff_ID}>{res.Toner_name}</option>;
+    return <option key={v4}>{res.Toner}</option>;
   });
   return (
     <select
