@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Requisitionform.css";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { Gettoner } from "./Gettoner";
 const Requisitionform = () => {
   const [staffName, setStaffName] = useState("");
   const [staffID, setStaffID] = useState("");
@@ -9,40 +10,27 @@ const Requisitionform = () => {
   const [location, setLocation] = useState("");
   const [toner_name, setToner_name] = useState("");
   const [printer, setPrinter] = useState("");
-  const [data, setData] = useState([]);
-  const api = import.meta.env.VITE_DJANGO_URL;
-  useEffect(() => {
-    getToners();
-  }, []);
+
+
   const postToner = (event) => {
     event.preventDefault();
     axios
       .post(`http://127.0.0.1:8000/toner_requests/`, {
-        Staff_name: "Kariuki",
-        Staff_ID: "001",
+        Staff_name: "Morris",
+        Staff_ID: "003",
         Department: 2,
         Location: 2,
-        Toner_name: 2,
+        Toner_name: 3,
         printer_name: 2,
       })
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
   };
-  const getToners = () => {
-    axios
-      .get(`http://127.0.0.1:8000/toner_requests/`)
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const rendertoner = () => {};
+
   return (
     <div className="request_page">
-      <h1>Request Form</h1>
+      {/* <h1>Request Form</h1> */}
+      
       <form className="request_form">
         <input
           className="text_input"
@@ -68,16 +56,7 @@ const Requisitionform = () => {
           placeholder="Location"
           onChange={(e) => setLocation(e.target.value)}
         />
-        <select
-          className="text_input"
-          type="text"
-          placeholder="Toner name"
-          onChange={(e) => setToner_name(e.target.value)}
-        >
-          {data.map((t) => {
-            <option value={t.Toner_requests.Department}></option>;
-          })}
-        </select>
+       <Gettoner/>
         <input
           className="text_input"
           type="text"
