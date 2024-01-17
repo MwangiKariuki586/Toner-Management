@@ -1,24 +1,35 @@
 .request_page{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #E6EBF4;
+    height: 100vh;
 }
 .request_form{
+    border-radius: 8px;
+    width: 40%;
+    padding: 20px 0;
+    background-color: white;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .text_input{
+    display: flex;
+    align-items: center;
     border: none;
+    padding: 1px 13px;
+    border-radius: 5px;
     height: 30px;
     margin-bottom: 15px;
-    background-color: #f9f9f9;
+    background-color: #E6EBF4;
     height: 20px;
     color: black;
-    width: 20%;
+    outline: 0;
 }
 .request_form button{
-    margin-top: 50px;
+    margin-top: 5px;
 }
 .text_input::placeholder{
     color: black;

@@ -46,7 +46,7 @@ const Requisitionform = () => {
 
   return (
     <div className="request_page">
-      {/* <h1>Request Form</h1> */}
+      <h1>Request Form</h1>
 
       <form className="request_form">
         <input
@@ -57,8 +57,8 @@ const Requisitionform = () => {
           onChange={(e) => setStaffName(e.target.value)}
         />
         <input
-          className="text_input"
-          type="text"
+          className="text_input no_spinner"
+          type="number"
           placeholder="staff id"
           onChange={(e) => setStaffID(e.target.value)}
         />
@@ -77,13 +77,13 @@ const Requisitionform = () => {
         <input
           className="text_input"
           type="text"
-          placeholder="staff id"
+          placeholder="Toner"
           onChange={(e) => setToner_name(e.target.value)}
         />
         <input
           className="text_input"
           type="text"
-          placeholder="staff id"
+          placeholder="Printer"
           onChange={(e) => setPrinter(e.target.value)}
         />
         {/* <select
