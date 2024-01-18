@@ -4,11 +4,11 @@ const Staff_login = () => {
   const [staffID, setStaffID] = useState("");
   const [pwd, setPwd] = useState("");
   const stateChange = () => {
-    setPwd((e) => e.target.value);
+    setPwd(e.target.value);
     console.log(pwd);
   };
   const staffChange = () => {
-    setStaffID((e) => e.target.value);
+    setStaffID(e.target.value);
     console.log(staffID);
   };
   return (
