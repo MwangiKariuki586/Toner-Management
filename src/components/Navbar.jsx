@@ -1,46 +1,57 @@
-import React, { useState } from 'react'
-import logo from "../assets/logo.png"
-import "./Navbar.css"
-import { Link,useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import logo from "../assets/logo.png";
+import "./Navbar.css";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropdown } from "react-icons/io";
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const [hide,setHide] = useState(true)
+  const navigate = useNavigate();
+  const [hide, setHide] = useState(true);
   const hideLogin = () => {
-    setHide(!hide)
-  }
+    setHide(!hide);
+  };
   return (
-    <nav className='navbar'>
-        <div className='logo_div'>
-            <Link to="/">
-                <img className='logo' src= {logo} alt="logo" />
+    <nav className="navbar">
+      <div className="logo_div">
+        <Link to="/">
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
+      </div>
+      <ul className="nav-links">
+        <Link to="/">
+          <li>Home</li>
+        </Link>
+        <Link to="/toner_request">
+          <li>Toner Request</li>
+        </Link>
+        <li className="login">
+          <div onClick={hideLogin} className="login_options">
+            <span>Login</span>
+            <IoIosArrowDropdown />
+          </div>
+          <div className={hide ? "options hide" : "options"}>
+            <Link
+              className="link"
+              onClick={hideLogin}
+              style={{ color: "inherit" }}
+              to="/staff_login"
+            >
+              Staff
             </Link>
-        </div>
-        <ul className='nav-links'>
-            <Link to = "/">
-                <li>
-                    Home
-                </li>
+            <Link
+              className="link"
+              onClick={hideLogin}
+              style={{ color: "inherit" }}
+              to="http://localhost:8000/admin"
+              target="_blank"
+            >
+              Admin
             </Link>
-            <Link to="/toner_request">
-                <li>
-                    Toner Request
-                </li>
-            </Link>
-            <li className="login">
-                <div onClick={hideLogin} className="login_options">
-                    <span>Login</span>
-                    <IoIosArrowDropdown />
-                </div>
-                <div className={hide ? "options hide":"options"}>
-                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "/staff_login">Staff</Link>
-                    <Link className='link' onClick={hideLogin} style={{color:"inherit"}} to = "http://localhost:8000/admin" target='_blank'>Admin</Link>
-                </div>
-            </li>
-        </ul>
+          </div>
+        </li>
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
