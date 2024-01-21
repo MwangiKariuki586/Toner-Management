@@ -2,16 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #E6EBF4;
-    height: 100vh;
+    height: 100%;
 }
 .request_form{
     border-radius: 8px;
     width: 40%;
     padding: 20px 0;
     background-color: white;
-    margin-top: 100px;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     align-items: center;
 }
@@ -35,4 +36,8 @@
     color: black;
     font-size: 15px;
     text-align: center;
+}
+.inputlabels{
+    display: flex;
+    justify-content: flex-start;
 }

@@ -17,10 +17,6 @@
     align-items: center;
    
 }
-.inputlabels{
-    display: flex;
-    justify-content: flex-start;
-}
 .signin_form .btn{
     margin-top: 30px;
 }

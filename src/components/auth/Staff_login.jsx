@@ -15,7 +15,7 @@ const Staff_login = () => {
   const signinUser = (event) => {
     event.preventDefault();
     axios
-      .post(`http://127.0.0.1:8000/users/`, {
+      .post(`http://127.0.0.1:8000/api/token/`, {
         username: staffID,
         password: pwd,
       })

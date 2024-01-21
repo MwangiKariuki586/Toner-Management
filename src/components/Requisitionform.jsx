@@ -47,45 +47,76 @@ const Requisitionform = () => {
   return (
     <div className="request_page">
       <h1>Request Form</h1>
-
       <form className="request_form">
-        <input
-          className="text_input"
-          type="text"
-          required
-          placeholder="staff name"
-          onChange={(e) => setStaffName(e.target.value)}
-        />
-        <input
-          className="text_input no_spinner"
-          type="number"
-          placeholder="staff id"
-          onChange={(e) => setStaffID(e.target.value)}
-        />
-        <input
-          className="text_input"
-          type="text"
-          placeholder="Department"
-          onChange={(e) => setDepartment(e.target.value)}
-        />
-        <input
-          className="text_input"
-          type="text"
-          placeholder="Location"
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <input
-          className="text_input"
-          type="text"
-          placeholder="Toner"
-          onChange={(e) => setToner_name(e.target.value)}
-        />
-        <input
-          className="text_input"
-          type="text"
-          placeholder="Printer"
-          onChange={(e) => setPrinter(e.target.value)}
-        />
+      <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Staff name</h4>
+          </label>
+          <input
+            className="keyinputs"
+            type="text"
+            placeholder="enter your staf name"
+            onChange={(e) => setStaffName(e.target.value)}
+          />
+        </div>
+        <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Staff id</h4>
+          </label>
+          <input
+            className="keyinputs no_spinner"
+            type="number"
+            placeholder="enter your staffID"
+            onChange={(e) => setStaffID(e.target.value)}
+          />
+        </div>
+        <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Department</h4>
+          </label>
+          <input
+            className="keyinputs"
+            type="text"
+            placeholder="enter your Department"
+            onChange={(e) => setDepartment(e.target.value)}
+          />
+        </div>
+        <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Location</h4>
+          </label>
+          <input
+            className="keyinputs"
+            type="text"
+            placeholder="enter your Location"
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </div>
+        <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Toner name</h4>
+          </label>
+          <input
+            className="keyinputs"
+            type="text"
+            placeholder="enter Toner name"
+            onChange={(e) => setToner_name(e.target.value)}
+          />
+        </div>
+        <div className="captions">
+          <label className="inputlabels" htmlFor="">
+            <h4>Printer name</h4>
+          </label>
+          <input
+            className="keyinputs"
+            type="text"
+            placeholder="enter Printer name"
+            onChange={(e) => setPrinter(e.target.value)}
+          />
+        </div>
+        <button className="btn" onClick={postToner}>
+          Submit
+        </button>
         {/* <select
           className="text_input"
           onChange={departmentValue}
@@ -111,9 +142,7 @@ const Requisitionform = () => {
           <Getprinter />
         </select> */}
 
-        <button className="btn" onClick={postToner}>
-          Submit
-        </button>
+        
       </form>
     </div>
   );
