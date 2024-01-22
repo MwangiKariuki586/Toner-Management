@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import UserContextProvider from "./context/UserContextProvider";
+import UserContext from "./context/UserContext";
 import "./App.css";
 import Homepage from "./components/Homepage";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -8,6 +9,7 @@ import Admin_login from "./components/auth/Admin_login";
 import Staff_login from "./components/auth/Staff_login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/auth/Signup";
+import Nyumbani from "./components/Nyumbani";
 
 function App() {
   const Mainlayout = () => {
@@ -26,6 +28,10 @@ function App() {
         {
           path: "/",
           element: <Homepage />,
+        },
+        {
+          path: "/nyumbani",
+          element: <Nyumbani />,
         },
         {
           path: "/toner_request",
