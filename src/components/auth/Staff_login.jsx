@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Staff_login.css";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 const Staff_login = () => {
   const [staffID, setStaffID] = useState("");
   const [pwd, setPwd] = useState("");
@@ -19,8 +20,16 @@ const Staff_login = () => {
         username: staffID,
         password: pwd,
       })
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        if (response.request.status == 200) {
+          console.log("authorize");
+          alert("You have successfully logged in");
+        }
+      })
+      .catch((err) => {
+        alert("incorrect Password or Staff id");
+        console.log(err);
+      });
   };
   return (
     <div className="signin_form">

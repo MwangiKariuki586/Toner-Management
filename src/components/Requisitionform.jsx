@@ -40,15 +40,23 @@ const Requisitionform = () => {
         Toner_name: toner_name,
         printer_name: printer,
       })
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        if (response.request.status == 201) {
+          alert("Toner request sent successfully");
+        }
+        console.log(response.data);
+      })
+      .catch((err) => {
+        alert("Error encountered on submition");
+        console.log(err);
+      });
   };
 
   return (
     <div className="request_page">
       <h1>Request Form</h1>
       <form className="request_form">
-      <div className="captions">
+        <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Staff name</h4>
           </label>
@@ -81,6 +89,7 @@ const Requisitionform = () => {
             onChange={(e) => setDepartment(e.target.value)}
           />
         </div>
+
         <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Location</h4>
@@ -141,8 +150,6 @@ const Requisitionform = () => {
         >
           <Getprinter />
         </select> */}
-
-        
       </form>
     </div>
   );
