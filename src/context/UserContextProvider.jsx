@@ -12,9 +12,15 @@ const UserContextProvider = ({ children }) => {
     : null;
   const [user, setUser] = useState(authenticate);
   const [authtoken, setAuthtoken] = useState(auth);
-
+  const logoutUser = () => {
+    setAuthtoken(null);
+    setUser(null);
+    localStorage.removeItem("user");
+  };
   return (
-    <UserContext.Provider value={{ user, setUser, authtoken, setAuthtoken }}>
+    <UserContext.Provider
+      value={{ user, setUser, authtoken, setAuthtoken, logoutUser }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -17,7 +17,6 @@ const Staff_login = () => {
   };
   const staffChange = (e) => {
     setStaffID(e.target.value);
-    console.log(staffID);
   };
   const signinUser = (event) => {
     event.preventDefault();
@@ -34,7 +33,6 @@ const Staff_login = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         if (err.response?.status === 400) {
           alert("Missing Staff ID or Password");
         } else if (err.response?.status === 401) {
@@ -70,7 +68,7 @@ const Staff_login = () => {
             onChange={stateChange}
           />
         </div>
-        <p>Hey {user?.username}</p>
+        {/* <p>Hey {user?.username}</p> */}
         <button className="btn" onClick={signinUser}>
           Sign in
         </button>

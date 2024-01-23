@@ -6,6 +6,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import UserContext from "../context/UserContext";
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const { logoutUser } = useContext(UserContext);
   const [hide, setHide] = useState(true);
   const hideLogin = () => {
     setHide(!hide);
@@ -25,7 +26,7 @@ const Navbar = () => {
           <li>Toner Request</li>
         </Link>
         {user ? (
-          <Link>Logout</Link>
+          <li onClick={logoutUser}>Logout</li>
         ) : (
           <li className="login">
             <div onClick={hideLogin} className="login_options">

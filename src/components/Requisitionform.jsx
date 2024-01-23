@@ -15,19 +15,15 @@ const Requisitionform = () => {
   const [department, setDepartment] = useState("");
   const tonerValue = (e) => {
     setToner_name(e.target.value);
-    console.log(toner_name);
   };
   const locationValue = (e) => {
     setLocation(e.target.value);
-    console.log(location);
   };
   const printerValue = (e) => {
     setPrinter(e.target.value);
-    console.log(printer);
   };
   const departmentValue = (e) => {
     setDepartment(e.target.value);
-    console.log(e.target.value);
   };
   const postToner = (event) => {
     event.preventDefault();
@@ -44,11 +40,9 @@ const Requisitionform = () => {
         if (response.request.status == 201) {
           alert("Toner request sent successfully");
         }
-        console.log(response.data);
       })
       .catch((err) => {
         alert("Error encountered on submition");
-        console.log(err);
       });
   };
 
