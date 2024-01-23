@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import "./Staff_login.css";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import UserContextProvider from "../../context/UserContextProvider";
 import UserContext from "../../context/UserContext";
 const Staff_login = () => {
   const { setUser } = useContext(UserContext);
   const { user } = useContext(UserContext);
+  const { authtoken } = useContext(UserContext);
+  const { setAuthtoken } = useContext(UserContext);
   const [staffID, setStaffID] = useState("");
   const [pwd, setPwd] = useState("");
   const [success, setSuccess] = useState(false);
   const [errmmsg, setErrmsg] = useState("");
   const stateChange = (e) => {
     setPwd(e.target.value);
-    console.log(pwd);
   };
   const staffChange = (e) => {
     setStaffID(e.target.value);
@@ -27,29 +27,20 @@ const Staff_login = () => {
         password: pwd,
       })
       .then((response) => {
-        console.log(response);
-        const accessToken = response?.data?.access;
-        setUser({ staffID, pwd, accessToken });
-        setStaffID("");
-        setPwd("");
-        setSuccess(true);
-        // if (response.request.status == 200) {
-        //   console.log(response);
-        //   alert("You have successfully logged in");
-        // } else if (response.data.access) {
-        //   localStorage.setItem("user", JSON.stringify(response.data));
-        // }
+        if (response.request.status == 200) {
+          setAuthtoken(response);
+          setUser(jwtDecode(response.data.access));
+          localStorage.setItem("user", JSON.stringify(response.data.access));
+        }
       })
       .catch((err) => {
         console.log(err);
-        if (!err?.response) {
-          alert("No server response");
-        } else if (err.response?.status === 400) {
-          setErrmsg("Missing Staff ID or Password");
+        if (err.response?.status === 400) {
+          alert("Missing Staff ID or Password");
         } else if (err.response?.status === 401) {
-          setErrmsg("Unauthorized");
+          alert("Invalid StaffID");
         } else {
-          setErrmsg("Login Failed");
+          alert("Login Failed");
         }
       });
   };
@@ -79,6 +70,7 @@ const Staff_login = () => {
             onChange={stateChange}
           />
         </div>
+        <p>Hey {user?.username}</p>
         <button className="btn" onClick={signinUser}>
           Sign in
         </button>

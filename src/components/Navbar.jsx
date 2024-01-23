@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowDropdown } from "react-icons/io";
-
+import UserContext from "../context/UserContext";
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const [hide, setHide] = useState(true);
   const hideLogin = () => {
     setHide(!hide);
@@ -24,31 +24,35 @@ const Navbar = () => {
         <Link to="/toner_request">
           <li>Toner Request</li>
         </Link>
-        <li className="login">
-          <div onClick={hideLogin} className="login_options">
-            <span>Login</span>
-            <IoIosArrowDropdown />
-          </div>
-          <div className={hide ? "options hide" : "options"}>
-            <Link
-              className="link"
-              onClick={hideLogin}
-              style={{ color: "inherit" }}
-              to="/staff_login"
-            >
-              Staff
-            </Link>
-            <Link
-              className="link"
-              onClick={hideLogin}
-              style={{ color: "inherit" }}
-              to="http://localhost:8000/admin"
-              target="_blank"
-            >
-              Admin
-            </Link>
-          </div>
-        </li>
+        {user ? (
+          <Link>Logout</Link>
+        ) : (
+          <li className="login">
+            <div onClick={hideLogin} className="login_options">
+              <span>Login</span>
+              <IoIosArrowDropdown />
+            </div>
+            <div className={hide ? "options hide" : "options"}>
+              <Link
+                className="link"
+                onClick={hideLogin}
+                style={{ color: "inherit" }}
+                to="/staff_login"
+              >
+                Staff
+              </Link>
+              <Link
+                className="link"
+                onClick={hideLogin}
+                style={{ color: "inherit" }}
+                to="http://localhost:8000/admin"
+                target="_blank"
+              >
+                Admin
+              </Link>
+            </div>
+          </li>
+        )}
       </ul>
     </nav>
   );

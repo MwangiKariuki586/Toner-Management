@@ -9,7 +9,8 @@ import Admin_login from "./components/auth/Admin_login";
 import Staff_login from "./components/auth/Staff_login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/auth/Signup";
-import Nyumbani from "./components/Nyumbani";
+import Landing from "./components/Landing";
+// import Nyumbani from "./components/Nyumbani";
 
 function App() {
   const Mainlayout = () => {
@@ -30,12 +31,8 @@ function App() {
           element: <Homepage />,
         },
         {
-          path: "/nyumbani",
-          element: <Nyumbani />,
-        },
-        {
           path: "/toner_request",
-          element: <Requisitionform />,
+          element: <Landing />,
         },
         {
           path: "/admin_login",
