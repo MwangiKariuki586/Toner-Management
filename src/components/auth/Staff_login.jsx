@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import "./Staff_login.css";
 import axios from "axios";
 import UserContext from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 const Staff_login = () => {
   const { setUser } = useContext(UserContext);
   const { user } = useContext(UserContext);
@@ -18,6 +19,7 @@ const Staff_login = () => {
   const staffChange = (e) => {
     setStaffID(e.target.value);
   };
+  const navigate = useNavigate();
   const signinUser = (event) => {
     event.preventDefault();
     axios
@@ -30,6 +32,7 @@ const Staff_login = () => {
           setAuthtoken(response);
           setUser(jwtDecode(response.data.access));
           localStorage.setItem("user", JSON.stringify(response.data.access));
+          navigate("/toner_request");
         }
       })
       .catch((err) => {

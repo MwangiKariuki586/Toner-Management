@@ -5,7 +5,7 @@ import "./App.css";
 import Homepage from "./components/Homepage";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Requisitionform from "./components/Requisitionform";
-import Admin_login from "./components/auth/Admin_login";
+
 import Staff_login from "./components/auth/Staff_login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/auth/Signup";
@@ -34,10 +34,7 @@ function App() {
           path: "/toner_request",
           element: <Landing />,
         },
-        {
-          path: "/admin_login",
-          element: <Admin_login />,
-        },
+
         {
           path: "/staff_login",
           element: <Staff_login />,

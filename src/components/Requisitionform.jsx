@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Requisitionform.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Gettoner } from "./Gettoner";
 import { Getdepartments } from "./Getdepartments";
@@ -25,6 +25,7 @@ const Requisitionform = () => {
   const departmentValue = (e) => {
     setDepartment(e.target.value);
   };
+  const navigate = useNavigate();
   const postToner = (event) => {
     event.preventDefault();
     axios
@@ -39,10 +40,15 @@ const Requisitionform = () => {
       .then((response) => {
         if (response.request.status == 201) {
           alert("Toner request sent successfully");
+          navigate("/");
         }
       })
       .catch((err) => {
-        alert("Error encountered on submition");
+        if (err.response?.status === 400) {
+          alert("Make sure you entered all the fields");
+        } else {
+          alert("Error encountered on submition");
+        }
       });
   };
 
