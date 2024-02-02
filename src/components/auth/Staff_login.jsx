@@ -24,7 +24,7 @@ const Staff_login = () => {
     event.preventDefault();
     axios
       .post(`http://127.0.0.1:8000/api/token/`, {
-        username: staffID,
+        staff_id: staffID,
         password: pwd,
       })
       .then((response) => {
