@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Requisitionform.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Gettoner } from "./Gettoner";
 import { Getdepartments } from "./Getdepartments";
 import { Getlocations } from "./Getlocation";
 import { Getprinter } from "./Getprinter";
+import UserContext from "../context/UserContext";
 const Requisitionform = () => {
   const [staffName, setStaffName] = useState("");
   const [staffID, setStaffID] = useState("");
@@ -13,6 +14,7 @@ const Requisitionform = () => {
   const [location, setLocation] = useState("");
   const [printer, setPrinter] = useState("");
   const [department, setDepartment] = useState("");
+  const { logoutUser } = useContext(UserContext);
   const tonerValue = (e) => {
     setToner_name(e.target.value);
   };
@@ -40,6 +42,7 @@ const Requisitionform = () => {
       .then((response) => {
         if (response.request.status == 201) {
           alert("Toner request sent successfully");
+          logoutUser();
           navigate("/");
         }
       })
