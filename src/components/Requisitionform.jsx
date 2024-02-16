@@ -28,22 +28,29 @@ const Requisitionform = () => {
     setDepartment(e.target.value);
   };
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem("user");
   const postToner = (event) => {
     event.preventDefault();
+    console.log(accessToken);
     axios
-      .post(`http://127.0.0.1:8000/toner_requests/`, {
-        Staff_name: staffName,
-        Staff_ID: staffID,
-        Department: department,
-        Location: location,
-        Toner_name: toner_name,
-        printer_name: printer,
-      })
+      .post(
+        `http://localhost:8000/toner/toner_requests/`,
+        {
+          toner: toner_name,
+          printer_name: printer,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer" + String(accessToken),
+          },
+        }
+      )
       .then((response) => {
         if (response.request.status == 201) {
           alert("Toner request sent successfully");
-          logoutUser();
-          navigate("/");
+          // logoutUser();
+          // navigate("/");
         }
       })
       .catch((err) => {
@@ -59,7 +66,7 @@ const Requisitionform = () => {
     <div className="request_page">
       <h1>Request Form</h1>
       <form className="request_form">
-        <div className="captions">
+        {/* <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Staff name</h4>
           </label>
@@ -103,7 +110,7 @@ const Requisitionform = () => {
             placeholder="enter your Location"
             onChange={(e) => setLocation(e.target.value)}
           />
-        </div>
+        </div> */}
         <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Toner name</h4>
@@ -129,30 +136,6 @@ const Requisitionform = () => {
         <button className="btn" onClick={postToner}>
           Submit
         </button>
-        {/* <select
-          className="text_input"
-          onChange={departmentValue}
-          defaultValue="IT"
-        >
-          <Getdepartments />
-        </select>
-        <select
-          className="text_input"
-          defaultValue="HEAD OFFICE"
-          onChange={locationValue}
-        >
-          <Getlocations />
-        </select>
-        <select className="text_input" defaultValue="Y" onChange={tonerValue}>
-          <Gettoner />
-        </select>
-        <select
-          className="text_input"
-          defaultValue="ECOSYS FS 2100D"
-          onChange={printerValue}
-        >
-          <Getprinter />
-        </select> */}
       </form>
     </div>
   );

@@ -23,8 +23,8 @@ const Staff_login = () => {
   const signinUser = (event) => {
     event.preventDefault();
     axios
-      .post(`http://127.0.0.1:8000/api/token/`, {
-        staff_id: staffID,
+      .post(`http://localhost:8000/api/login/`, {
+        staffid: staffID,
         password: pwd,
       })
       .then((response) => {
