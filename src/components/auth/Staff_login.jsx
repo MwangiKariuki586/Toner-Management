@@ -13,6 +13,8 @@ const Staff_login = () => {
   const [pwd, setPwd] = useState("");
   const [success, setSuccess] = useState(false);
   const [errmmsg, setErrmsg] = useState("");
+  const { refreshToken } = useContext(UserContext);
+  const { logoutUser } = useContext(UserContext);
   const stateChange = (e) => {
     setPwd(e.target.value);
   };
@@ -28,10 +30,30 @@ const Staff_login = () => {
         password: pwd,
       })
       .then((response) => {
-        if (response.request.status == 200) {
+        if (response.status == 200) {
           setAuthtoken(response);
           setUser(jwtDecode(response.data.access));
-          localStorage.setItem("user", JSON.stringify(response.data.access));
+          localStorage.setItem("access", JSON.stringify(response.data.access));
+          localStorage.setItem(
+            "refresh",
+            JSON.stringify(response.data.refresh)
+          );
+          // Set a timeout for logout when the access token expires
+          const decodedToken = jwtDecode(response.data.access);
+          const expirationTime = decodedToken.exp * 1000; // Convert seconds to milliseconds
+          const currentTime = new Date().getTime();
+          const timeUntilExpiration = expirationTime - currentTime;
+
+          console.log("Timeout set for", timeUntilExpiration, "milliseconds");
+
+          setTimeout(() => {
+            console.log("Logout timeout reached. Logging out...");
+
+            // Logout logic here
+            // For example, clear local storage and navigate to the logout page
+            logoutUser();
+            navigate("/");
+          }, timeUntilExpiration);
           navigate("/toner_request");
         }
       })
@@ -71,7 +93,6 @@ const Staff_login = () => {
             onChange={stateChange}
           />
         </div>
-        {/* <p>Hey {user?.username}</p> */}
         <button className="btn" onClick={signinUser}>
           Sign in
         </button>
