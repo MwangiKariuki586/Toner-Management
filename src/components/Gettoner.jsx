@@ -9,28 +9,22 @@ export const Gettoner = () => {
   }, []);
 
   const getToners = () => {
-    fetch(`http://localhost:8000/toners/`)
+    fetch(`http://localhost:8000/toner/toners/`)
       .then((response) => response.json())
       .then((result) => {
         setTonerlist(result.Toners);
-        console.log(tonerlist);
+        console.log(tonerlist ? tonerlist : null);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const maptoners = tonerlist.map((res) => {
-    return <option key={uuidv4()}>{res.Toner}</option>;
+  const maptoners = tonerlist?.map((res) => {
+    return (
+      <option key={uuidv4()} value={res.id}>
+        {res.Toner_name}
+      </option>
+    );
   });
-  return (
-    <>{maptoners}</>
-    // <select
-    //   className="text_input"
-    //   type="text"
-    //   placeholder="Toner name"
-    //   onChange={(e) => setToner_name(e.target.value)}
-    // >
-
-    // </select>
-  );
+  return <>{maptoners}</>;
 };

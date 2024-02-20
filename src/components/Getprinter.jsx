@@ -9,18 +9,22 @@ export const Getprinter = () => {
   }, []);
 
   const getToners = () => {
-    fetch(`http://localhost:8000/printers/`)
+    fetch(`http://localhost:8000/toner/printers/`)
       .then((response) => response.json())
       .then((result) => {
         setPrinters(result.Printer);
-        console.log(printers);
+        console.log(printers ? printers : null);
       })
       .catch((err) => {
         console.log(err);
       });
   };
   const mapPrinters = printers.map((res) => {
-    return <option key={uuidv4()}>{res.Printer_name}</option>;
+    return (
+      <option key={uuidv4()} value={res.id}>
+        {res.Printer_name}
+      </option>
+    );
   });
   return <>{mapPrinters}</>;
 };

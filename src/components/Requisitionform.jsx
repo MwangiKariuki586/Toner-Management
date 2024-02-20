@@ -18,14 +18,13 @@ const Requisitionform = () => {
   const tonerValue = (e) => {
     setToner_name(e.target.value);
   };
-  const locationValue = (e) => {
-    setLocation(e.target.value);
-  };
+
   const printerValue = (e) => {
     setPrinter(e.target.value);
   };
-  const departmentValue = (e) => {
-    setDepartment(e.target.value);
+  const toner2Value = (e) => {
+    console.log("Toner Value:", e.target.value);
+    setToner_name(e.target.value);
   };
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("access");
@@ -51,12 +50,12 @@ const Requisitionform = () => {
           headers,
         }
       )
+
       .then((response) => {
-        console.log(response);
-        if (response.request.status == 201) {
+        console.log(toner_name);
+        if (response.request.status === 201) {
           alert("Toner request sent successfully");
           logoutUser();
-          // navigate("/");
         }
       })
       .catch((err) => {
@@ -76,23 +75,36 @@ const Requisitionform = () => {
           <label className="inputlabels" htmlFor="">
             <h4>Toner name</h4>
           </label>
-          <input
+          <select
+            className="text_input"
+            onChange={(e) => setToner_name(e.target.value)}
+          >
+            <Gettoner />
+          </select>
+
+          {/* <input
             className="keyinputs"
             type="text"
             placeholder="enter Toner name"
             onChange={(e) => setToner_name(e.target.value)}
-          />
+          /> */}
         </div>
         <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Printer name</h4>
           </label>
-          <input
+          <select
+            className="text_input"
+            onChange={(e) => setPrinter(e.target.value)}
+          >
+            <Getprinter />
+          </select>
+          {/* <input
             className="keyinputs"
             type="text"
             placeholder="enter Printer name"
             onChange={(e) => setPrinter(e.target.value)}
-          />
+          /> */}
         </div>
         <button className="btn" onClick={postToner}>
           Submit
