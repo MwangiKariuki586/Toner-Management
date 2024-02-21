@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 import UserContext from "./UserContext";
 import { jwtDecode } from "jwt-decode";
@@ -39,13 +39,23 @@ const UserContextProvider = ({ children }) => {
         logoutUser();
       });
   };
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      refreshToken();
-    }, 120000);
+  const memoizedRefreshToken = useCallback(() => {
+    refreshToken();
+  }, [refreshToken]);
 
-    return () => clearInterval(intervalId);
-  }, [accessrefresh]);
+  useEffect(() => {
+    // Check if the user is logged in before setting up the interval
+    if (accessrefresh) {
+      const intervalId = setInterval(() => {
+        memoizedRefreshToken();
+      }, 120000);
+
+      return () => clearInterval(intervalId);
+    }
+
+    // Cleanup function (clearInterval) will run immediately if the user is not logged in
+  }, [accessrefresh, memoizedRefreshToken]);
+
   return (
     <UserContext.Provider
       value={{

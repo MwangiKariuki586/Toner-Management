@@ -76,35 +76,28 @@ const Requisitionform = () => {
             <h4>Toner name</h4>
           </label>
           <select
+            value={toner_name}
             className="text_input"
             onChange={(e) => setToner_name(e.target.value)}
           >
+            <option className="text_input" value="">
+              Select a toner
+            </option>
             <Gettoner />
           </select>
-
-          {/* <input
-            className="keyinputs"
-            type="text"
-            placeholder="enter Toner name"
-            onChange={(e) => setToner_name(e.target.value)}
-          /> */}
         </div>
         <div className="captions">
           <label className="inputlabels" htmlFor="">
             <h4>Printer name</h4>
           </label>
           <select
+            value={printer}
             className="text_input"
             onChange={(e) => setPrinter(e.target.value)}
           >
+            <option value="">Select a printer</option>
             <Getprinter />
           </select>
-          {/* <input
-            className="keyinputs"
-            type="text"
-            placeholder="enter Printer name"
-            onChange={(e) => setPrinter(e.target.value)}
-          /> */}
         </div>
         <button className="btn" onClick={postToner}>
           Submit

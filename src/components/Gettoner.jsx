@@ -21,7 +21,7 @@ export const Gettoner = () => {
   };
   const maptoners = tonerlist?.map((res) => {
     return (
-      <option key={uuidv4()} value={res.id}>
+      <option key={uuidv4()} value={res.id} className="text_input">
         {res.Toner_name}
       </option>
     );
