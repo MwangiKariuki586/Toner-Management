@@ -31,7 +31,7 @@ const Navbar = () => {
           <li className="login">
             <div onClick={hideLogin} className="login_options">
               <span>Login</span>
-              <IoIosArrowDropdown />
+              <IoIosArrowDropdown style={{ width: "18px" }} />
             </div>
             <div className={hide ? "options hide" : "options"}>
               <Link

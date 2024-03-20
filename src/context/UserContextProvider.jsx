@@ -17,6 +17,7 @@ const UserContextProvider = ({ children }) => {
     : null;
   const [user, setUser] = useState(authenticate);
   const [authtoken, setAuthtoken] = useState(auth);
+  const [isloading, setIsloading] = useState(false);
 
   const logoutUser = () => {
     setAuthtoken(null);
@@ -65,6 +66,8 @@ const UserContextProvider = ({ children }) => {
         setAuthtoken,
         logoutUser,
         refreshToken,
+        isloading,
+        setIsloading,
       }}
     >
       {children}

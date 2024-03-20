@@ -9,7 +9,7 @@ export const Gettoner = () => {
   }, []);
 
   const getToners = () => {
-    fetch(`http://localhost:8000/toner/toners/`)
+    fetch(`http://192.168.9.17:8000/toner/toners/`)
       .then((response) => response.json())
       .then((result) => {
         setTonerlist(result.Toners);

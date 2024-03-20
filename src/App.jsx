@@ -10,7 +10,8 @@ import Staff_login from "./components/auth/Staff_login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/auth/Signup";
 import Landing from "./components/Landing";
-// import Nyumbani from "./components/Nyumbani";
+import Loading from "./components/Loading";
+import Success from "./components/Success";
 
 function App() {
   const Mainlayout = () => {
@@ -42,6 +43,14 @@ function App() {
         {
           path: "/signup",
           element: <Signup />,
+        },
+        {
+          path: "/loading",
+          element: <Loading />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
         },
       ],
     },
