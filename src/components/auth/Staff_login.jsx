@@ -73,8 +73,10 @@ const Staff_login = () => {
         //   alert("Missing Staff ID or Password");
         // } else
         if (err.response?.status === 401) {
+          setIsloading(false);
           alert("Invalid StaffID");
         } else {
+          setIsloading(false);
           alert("Login Failed");
         }
       });

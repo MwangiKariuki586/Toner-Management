@@ -12,6 +12,7 @@ import Signup from "./components/auth/Signup";
 import Landing from "./components/Landing";
 import Loading from "./components/Loading";
 import Success from "./components/Success";
+import NotFound from "./components/not found/NotFound";
 
 function App() {
   const Mainlayout = () => {
@@ -53,6 +54,10 @@ function App() {
           element: <Success />,
         },
       ],
+    },
+    {
+      path: "/*",
+      element: <NotFound />,
     },
   ]);
   return (
