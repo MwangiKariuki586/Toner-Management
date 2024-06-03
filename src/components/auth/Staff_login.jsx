@@ -34,7 +34,7 @@ const Staff_login = () => {
       setIsloading(true);
     }
     axios
-      .post(`http://192.168.9.17:8000/api/login/`, {
+      .post(`http://localhost:8000/api/login/`, {
         staffid: staffID,
         password: pwd,
       })
@@ -59,8 +59,6 @@ const Staff_login = () => {
           setTimeout(() => {
             console.log("Logout timeout reached. Logging out...");
 
-            // Logout logic here
-            // For example, clear local storage and navigate to the logout page
             logoutUser();
             navigate("/");
           }, timeUntilExpiration);
@@ -69,9 +67,6 @@ const Staff_login = () => {
         }
       })
       .catch((err) => {
-        // if (err.response?.status === 400) {
-        //   alert("Missing Staff ID or Password");
-        // } else
         if (err.response?.status === 401) {
           setIsloading(false);
           alert("Invalid StaffID");

@@ -51,7 +51,7 @@ const Requisitionform = () => {
     // console.log("Headers:", headers);
     axios
       .post(
-        `http://192.168.9.17:8000/toner/toner_requests/`,
+        `http://localhost:8000/toner/toner_requests/`,
         {
           toner: toner_name,
           printer_name: printer,
