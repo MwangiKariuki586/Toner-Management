@@ -13,7 +13,7 @@ export const Gettoner = () => {
       .then((response) => response.json())
       .then((result) => {
         setTonerlist(result.Toners);
-        console.log(tonerlist ? tonerlist : null);
+        //console.log(tonerlist ? tonerlist : null);
       })
       .catch((err) => {
         console.log(err);

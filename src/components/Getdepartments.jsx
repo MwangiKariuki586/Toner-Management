@@ -13,7 +13,7 @@ export const Getdepartments = () => {
       .then((response) => response.json())
       .then((result) => {
         setDepartments(result.Departments);
-        console.log(departments);
+        //console.log(departments);
       })
       .catch((err) => {
         console.log(err);

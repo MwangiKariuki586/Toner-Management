@@ -13,7 +13,7 @@ export const Getprinter = () => {
       .then((response) => response.json())
       .then((result) => {
         setPrinters(result.Printer);
-        console.log(printers ? printers : null);
+        //console.log(printers ? printers : null);
       })
       .catch((err) => {
         console.log(err);

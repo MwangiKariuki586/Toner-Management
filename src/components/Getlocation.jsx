@@ -13,7 +13,7 @@ export const Getlocations = () => {
       .then((response) => response.json())
       .then((result) => {
         setLocations(result.Locations);
-        console.log(locations);
+        //console.log(locations);
       })
       .catch((err) => {
         console.log(err);

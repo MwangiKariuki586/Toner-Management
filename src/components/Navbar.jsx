@@ -46,7 +46,7 @@ const Navbar = () => {
                 className="link"
                 onClick={hideLogin}
                 style={{ color: "inherit" }}
-                to="http://localhost:8000/admin"
+                to=""
                 target="_blank"
               >
                 Admin

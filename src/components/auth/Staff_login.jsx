@@ -93,6 +93,7 @@ const Staff_login = () => {
                 type="number"
                 placeholder="enter your staffID"
                 onChange={staffChange}
+                required
               />
             </div>
             <div className="captions">
@@ -104,6 +105,7 @@ const Staff_login = () => {
                 type="password"
                 placeholder="enter your password"
                 onChange={stateChange}
+                required
               />
             </div>
             <button className="btn" onClick={signinUser}>

@@ -20,3 +20,9 @@
 .signin_form .btn{
     margin-top: 30px;
 }
+.keyinputs{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline-color: #646cff;
+}
